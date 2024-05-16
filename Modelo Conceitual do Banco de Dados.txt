@@ -1,0 +1,85 @@
+Modelo Conceitual do Banco de Dados
+Tabela: Produto
+•	produto_id (Chave Primária, Inteiro): Identificador único do produto.
+•	descricao (Texto): Descrição do produto.
+•	preco_unitario (Decimal): Preço unitário do produto.
+•	disponibilidade (Inteiro): Indicador de disponibilidade do produto.
+•	qtd_estoque (Inteiro): Quantidade em estoque do produto.
+•	image_produto (Texto): Caminho da imagem do produto.
+•	largura (Ponto Flutuante): Largura do produto.
+•	altura (Ponto Flutuante): Altura do produto.
+•	profundidade (Ponto Flutuante): Profundidade do produto.
+•	peso (Ponto Flutuante): Peso do produto.
+•	funcionalidade_adicionais (Texto, Opcional): Funcionalidades adicionais do produto.
+•	instrucoes_uso (Texto, Opcional): Instruções de uso do produto.
+•	categoria_produto (Texto): Categoria de produtos vendidos pela loja.
+
+
+Tabela: Comprador
+•	comprador_id (Chave Primária, Inteiro): Identificador único do comprador.
+•	nome_completo (Texto): Nome completo do comprador.
+•	cpf (Texto): CPF do comprador.
+•	endereco (Texto): Endereço do comprador.
+•	cep (Texto): CEP do comprador.
+•	cidade (Texto): Cidade do comprador.
+•	estado (Texto): Estado do comprador.
+•	telefone (Texto): Número de telefone do comprador.
+•	email (Texto): Endereço de e-mail do comprador.
+
+Tabela: Vendedor
+•	vendedor_id (Chave Primária, Inteiro): Identificador único do vendedor.
+•	nome_completo (Texto): Nome completo do vendedor.
+•	cnpj (Texto): CNPJ do vendedor.
+•	endereco (Texto): Endereço do vendedor.
+•	cep (Texto): CEP do vendedor.
+•	cidade (Texto): Cidade do vendedor.
+•	estado (Texto): Estado do vendedor.
+•	email (Texto): Endereço de e-mail do vendedor.
+•	telefone (Texto): Número de telefone do vendedor.
+•	nome_loja (Texto): Nome da loja do vendedor.
+•	descricao_loja (Texto): Descrição da loja do vendedor.
+•	logo_loja (Texto): Caminho da logo da loja do vendedor.
+•	numero_conta (Texto): Número da conta bancária do vendedor.
+•	banco (Texto): Banco associado à conta bancária do vendedor.
+•	tipo_da_conta (Texto): Tipo da conta bancária do vendedor.
+•	metodo_pagamento_preferencial (Texto): Método de pagamento preferencial do vendedor.
+
+Tabela: Representante Suporte Cliente
+•	representante_id (Chave Primária, Inteiro): Identificador único do representante de suporte ao cliente.
+•	treinamento_acessibilidade (Texto): Treinamento em acessibilidade do representante.
+•	canais_comunicacao (Inteiro): Canais de comunicação disponíveis para o cliente.
+•	registro_interacao (Texto, Opcional): Registro de interações com os clientes.
+•	vendedor_id (Inteiro): Identificador do vendedor associado.
+
+Tabela: Vendedor Autenticação
+•	vendedor_id (Chave Primária, Inteiro): Identificador único do vendedor (mesmo que na tabela "Vendedor").
+•	nome_usuario (Texto): Nome de usuário para autenticação.
+•	senha (Texto, Opcional): Senha para autenticação.
+
+Tabela: Preferências Comprador
+•	preferencial_id (Chave Primária, Inteiro): Identificador único das preferências do comprador.
+•	produto_id (Inteiro): Identificador do produto associado.
+•	comprador_id (Inteiro): Identificador do comprador associado.
+•	historico_compras (Texto): Histórico de compras do comprador.
+•	preferencias_produtos (Texto, Opcional): Preferências de produtos do comprador.
+•	prefencias_valores (Ponto Flutuante, Opcional): Preferências de valores do comprador.
+
+Tabela: Comprador Autenticação
+•	comprador_id (Chave Primária, Inteiro): Identificador único do comprador (mesmo que na tabela "Comprador").
+•	nome_usuario (Texto): Nome de usuário para autenticação.
+•	senha (Texto): Senha para autenticação.
+
+Tabela: Avaliação
+•	avaliacao_id (Chave Primária, Inteiro): Identificador único da avaliação.
+•	comprador_id (Inteiro): Identificador do comprador que fez a avaliação.
+•	vendedor_id (Inteiro): Identificador do vendedor avaliado.
+•	produto_id (Inteiro): Identificador do produto avaliado.
+•	pontuacao (Decimal): Pontuação atribuída à avaliação.
+•	comentario (Texto, Opcional): Comentário associado à avaliação.
+•	data_avaliacao (Data e Hora, Opcional): Data e hora da avaliação.
+
+Tabela: Carrinho
+•	carrinho_id (Chave Primária, Inteiro): Identificador único do carrinho.
+•	comprador_id (Inteiro): Identificador do comprador associado.
+•	produto_id (Inteiro): Identificador do produto associado.
+

@@ -1,0 +1,116 @@
+Requisitos Combinados e Descrição Detalhada das Tabelas
+
+
+Tabela: Produto
+* produto_id: Identificador único do produto. Permite distinguir cada produto de forma única dentro do sistema. É a chave primária da tabela.
+* descricao: Descrição detalhada do produto, fornecendo informações sobre suas características, funcionalidades e uso.
+* preco_unitario: Indica o preço unitário do produto, facilitando cálculos financeiros e exibição de preços aos usuários.
+* disponibilidade: Este campo indica se o produto está disponível para compra. Pode ser utilizado para controle de estoque e exibição de produtos disponíveis aos compradores.
+* qtd_estoque: Quantidade disponível em estoque do produto. Permite controlar o estoque e atualizar a disponibilidade conforme as vendas são realizadas.
+* image_produto: Caminho da imagem do produto, que é exibida aos compradores para visualização. Ajuda na apresentação e marketing do produto.
+* largura: Dimensão física do produto na largura. Pode ser utilizada para calcular custos de envio e dimensionamento de embalagens.
+* altura: Dimensão física do produto na altura. Auxilia no cálculo de custos de envio e no dimensionamento de embalagens.
+* profundidade: Dimensão física do produto na profundidade. Importante para calcular custos de envio e dimensionar embalagens.
+* peso: Peso do produto. Usado para cálculos de frete e envio.
+* funcionalidade_adicionais: Campo opcional para descrever funcionalidades extras do produto, que podem influenciar a decisão de compra do cliente.
+* instrucoes_uso: Campo opcional para fornecer instruções de uso ou montagem do produto, aumentando a satisfação do cliente.
+* categoria_produto: Categoria de produtos vendidos pela loja. Ajuda os compradores a navegar e encontrar produtos específicos.
+
+Relações:
+* Um produto pode ter várias preferências de comprador, pois diferentes compradores podem ter preferências por diferentes produtos.
+* Um produto pode ter várias avaliações, pois múltiplos compradores podem avaliar o mesmo produto.
+* Um produto pode ser adicionado a vários carrinhos, já que muitos compradores podem adicioná-lo ao carrinho de compras.
+
+Tabela: Comprador
+* comprador_id: Identificador único do comprador. Permite distinguir cada comprador de forma única no sistema. É a chave primária da tabela.
+* nome_completo: Nome completo do comprador. Usado para identificação e comunicação personalizada.
+* cpf: Número de CPF do comprador. Serve como identificação única para cada comprador e pode ser usado em processos de autenticação.
+* endereco: Endereço completo do comprador, incluindo rua, número, complemento, bairro, etc. Usado para entrega de produtos.
+* cep: CEP (Código de Endereçamento Postal) do comprador. Auxilia na localização e entrega precisa dos produtos.
+* cidade: Cidade do comprador. Parte do endereço utilizado para entrega e identificação do local do comprador.
+* estado: Estado do comprador. Junto com a cidade, é usado para localização e entrega precisa dos produtos.
+* telefone: Número de telefone do comprador. Usado para comunicação e contato em caso de necessidade.
+* email: Endereço de e-mail do comprador. Usado para comunicação, confirmação de pedidos e envio de informações sobre produtos e promoções.
+Relações:
+* Um comprador pode ter várias preferências de produtos, pois ele pode preferir diferentes tipos de produtos.
+* Um comprador pode realizar várias avaliações, já que ele pode avaliar diferentes produtos e vendedores.
+* Um comprador pode ter vários carrinhos, pois ele pode adicionar diferentes produtos ao carrinho em momentos diferentes.
+
+
+
+
+
+Tabela: Vendedor
+* vendedor_id: Identificador único do vendedor. É a chave primária da tabela.
+* nome_completo: Nome completo do vendedor. Usado para identificação e comunicação.
+* cnpj: Número de CNPJ (Cadastro Nacional da Pessoa Jurídica) do vendedor. Serve como identificação única para cada vendedor.
+* endereco: Endereço completo do vendedor, incluindo rua, número, complemento, bairro, etc. Usado para contato e para fins fiscais.
+* cep: CEP (Código de Endereçamento Postal) do vendedor. Auxilia na localização e no envio de correspondências.
+* cidade: Cidade do vendedor. Parte do endereço utilizada para contato e identificação do local do vendedor.
+* estado: Estado do vendedor. Junto com a cidade, é usado para contato e identificação do local do vendedor.
+* email: Endereço de e-mail do vendedor. Usado para comunicação, confirmação de pedidos e suporte ao cliente.
+* telefone: Número de telefone do vendedor. Usado para contato direto com o vendedor.
+* nome_loja: Nome da loja do vendedor. É usado para identificação da marca.
+* descricao_loja: Descrição da loja do vendedor. Pode incluir informações sobre a história da empresa, valores, missão, etc.
+* logo_loja: Caminho para a imagem da logo da loja. Usado para branding e identificação visual.
+* numero_conta: Número da conta bancária do vendedor. Usado para transações financeiras.
+* banco: Nome do banco associado à conta bancária do vendedor. Usado para transações financeiras.
+* tipo_da_conta: Tipo da conta bancária do vendedor (corrente, poupança, etc.). Usado para transações financeiras.
+* metodo_pagamento_preferencial: Método de pagamento preferencial do vendedor (transferência bancária, PayPal, etc.). Usado para transações financeiras.
+Relações:
+* Um vendedor pode ter vários produtos, já que ele pode vender diferentes tipos de produtos em sua loja.
+* Um vendedor pode ter vários representantes de suporte ao cliente, pois eles podem ser responsáveis por diferentes aspectos do atendimento ao cliente.
+
+
+Tabela: Representante Suporte Cliente
+* representante_id: Identificador único do representante de suporte ao cliente. É a chave primária da tabela.
+* treinamento_acessibilidade: Detalhes sobre o treinamento em acessibilidade do representante. Pode incluir informações sobre como lidar com clientes com necessidades especiais.
+* canais_comunicacao: Canais de comunicação disponíveis para os clientes entrarem em contato com o representante. Pode incluir telefone, e-mail, chat ao vivo, etc.
+* registro_interacao: Registro das interações do representante com os clientes. Pode incluir detalhes sobre consultas, reclamações, solicitações de suporte, etc.
+* vendedor_id: Identificador do vendedor associado ao representante. Estabelece a relação de um para muitos entre vendedor e representantes de suporte ao cliente.
+Relações:
+* Um representante de suporte ao cliente está associado a um único vendedor, pois eles são responsáveis por oferecer suporte aos clientes específicos da loja.
+
+Tabela: Vendedor Autenticação
+* vendedor_id: Identificador único do vendedor. É a chave primária da tabela e também uma chave estrangeira que se refere ao vendedor na tabela Vendedor.
+* nome_usuario: Nome de usuário para autenticação do vendedor. Usado juntamente com a senha para acessar a conta de vendedor.
+* senha: Senha para autenticação do vendedor. Usada juntamente com o nome de usuário para acessar a conta de vendedor. A senha vai ser criptografada para segurança dos dados .
+Relações:
+* Cada registro nesta tabela está associado a um único vendedor, mantendo uma relação de um para um entre a tabela de autenticação e a tabela de vendedor.
+
+Tabela: Preferências Comprador
+* preferencial_id: Identificador único da preferência do comprador. É a chave primária da tabela.
+* produto_id: Identificador do produto que representa a preferência do comprador. É uma chave estrangeira referenciando a tabela Produto.
+* comprador_id: Identificador do comprador associado à preferência. É uma chave estrangeira referenciando a tabela Comprador.
+* historico_compras: Histórico de compras do comprador, incluindo detalhes como datas, produtos comprados, etc.
+* preferencias_produtos: Preferências específicas de produtos do comprador, como marca favorita, tipo de produto preferido, etc.
+* prefencias_valores: Valores de preferência do comprador, como faixa de preço preferencial, descontos desejados, etc.
+Relações:
+* Cada registro nesta tabela está associado a um único comprador e a um único produto, estabelecendo uma relação de muitos para muitos entre comprador e produto.
+
+Tabela: Comprador Autenticação
+* comprador_id: Identificador único do comprador. É a chave primária da tabela e também uma chave estrangeira que se refere ao comprador na tabela Comprador.
+* nome_usuario: Nome de usuário para autenticação do comprador. Usado juntamente com a senha para acessar a conta de comprador.
+* senha: Senha para autenticação do comprador. Usada juntamente com o nome de usuário para acessar a conta de comprador A senha vai ser criptografada para segurança dos dados.
+Relações:
+* Cada registro nesta tabela está associado a um único comprador, mantendo uma relação de um para um entre a tabela de autenticação e a tabela de comprador.
+
+Tabela: Avaliação
+* avaliacao_id: Identificador único da avaliação. É a chave primária da tabela.
+* comprador_id: Identificador do comprador que fez a avaliação. É uma chave estrangeira referenciando a tabela Comprador.
+* vendedor_id: Identificador do vendedor avaliado. É uma chave estrangeira referenciando a tabela Vendedor.
+* produto_id: Identificador do produto avaliado. É uma chave estrangeira referenciando a tabela Produto.
+* pontuacao: Pontuação atribuída à avaliação. Pode ser uma escala numérica, por exemplo, de 1 a 5 estrelas.
+* comentario: Comentário opcional feito pelo comprador sobre a avaliação do produto ou do vendedor.
+* data_avaliacao: Data e hora em que a avaliação foi feita.
+Relações:
+* Cada avaliação está associada a um único comprador, vendedor e produto, estabelecendo uma relação de um para muitos entre comprador, vendedor e produto.
+
+Tabela: Carrinho
+* carrinho_id: Identificador único do carrinho. É a chave primária da tabela.
+* comprador_id: Identificador do comprador dono do carrinho. É uma chave estrangeira referenciando a tabela Comprador.
+* produto_id: Identificador do produto adicionado ao carrinho. É uma chave estrangeira referenciando a tabela Produto.
+Relações:
+* Cada registro nesta tabela está associado a um único comprador e a um único produto, estabelecendo uma relação de muitos para muitos entre comprador e produto.
+
+
